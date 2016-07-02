@@ -1,0 +1,6 @@
+{ "galaxy.meteor.com": { 
+     "env": { 
+        "MONGO_URL": "mongodb://<meteortutorial>:<a123456>@ds011785.mlab.com:11785/meteortutorial"
+     } 
+   }
+}
