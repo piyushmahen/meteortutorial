@@ -1,0 +1,1 @@
+This is codebase for meteor tutorial held in Bangalore, on 2nd July 2016.
