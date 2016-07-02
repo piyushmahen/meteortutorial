@@ -3,23 +3,63 @@
 </head>
 
 <body>
-  <h1>Welcome to Meteor!</h1>
 
-  {{> hello}}
-  {{> info}}
 </body>
 
-<template name="hello">
-  <button>Click Me</button>
-  <p>You've pressed the button {{counter}} times.</p>
+<template name="landingpage">
+  Welcome to Epecare!<br>
+  <a href="" onclick="return false;" id="regasagent">Register as Agent</a><br>
+  <div class="hidden" id="regasagentform">
+    <label for="agentname">Agent Name</label>
+    <input id="agentname" placeholder="agent name"><br><br>
+    <label for="companyname">Company Name</label>
+    <input id="companyname" placeholder="company name"><br><br>
+    <label for="agentemailaddress">Email Address</label>
+    <input id="agentemailaddress" placeholder="email address"><br><br>
+    <label for="agentpassword">Password</label>
+    <input type="password" id="agentpassword"><br>
+
+    <a href="" onclick="return false" id="submitagent">Register</a><br><br><br>
+  </div>
+  <a href="" id="reqservice" onclick="return false;">Request service</a><br><br>
+  <div class="hidden" id="serviceform">
+    <label for="identity">Phone number given during purchase</label>
+    <input type="text" id="identity"><br>
+
+    <a href="" onclick="return false" id="submitcustomer">Get Service</a><br><br><br>
+  </div>
+
+  Login:
+  email:<input id="loginemail"><br><br>
+  password:<input type="password" id="loginpassword">
+  <a href="" onclick="return false;" id="loginbutton">Login</a>
 </template>
 
-<template name="info">
-  <h2>Learn Meteor!</h2>
-  <ul>
-    <li><a href="https://www.meteor.com/try" target="_blank">Do the Tutorial</a></li>
-    <li><a href="http://guide.meteor.com" target="_blank">Follow the Guide</a></li>
-    <li><a href="https://docs.meteor.com" target="_blank">Read the Docs</a></li>
-    <li><a href="https://forums.meteor.com" target="_blank">Discussions</a></li>
-  </ul>
+<template name="agent">
+  <h1>Agent</h1>
+  Welcome {{currentUser.profile.name}}!<br>
+
+  Your company: {{currentUser.profile.company}}
+
+Write Response:<input id="agentinput"> <a id="sendagent">Send</a> <br>
+  {{#if messagesagent}}<br><br>
+  {{#each messagesagent}}
+  {{#if customer}}{{customer}}{{else}}{{agent}}{{/if}}:{{msg}}<br><br>
+  {{/each}}
+  {{/if}}  
+</template>
+
+<template name="getservice">
+  <h1>Customer</h1>
+  Welcome {{phonenumber}}!<br>
+
+  Write Issue:<input id="custinput"> <a id="sendcust">Send</a> <br>
+  
+  <div>
+    {{#if messagescust}}<br><br>
+    {{#each messagescust}}
+    {{#if customer}}{{customer}}{{else}}{{agent}}{{/if}}:{{msg}}<br><br>
+    {{/each}}
+    {{/if}}
+  </div>
 </template>

@@ -1,0 +1,1 @@
+Communication = new Mongo.Collection("communication");
